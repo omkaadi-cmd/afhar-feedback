@@ -732,7 +732,205 @@ function gradeQuiz(quiz){
     </section>
   `;
 }
+const oldGradeQuiz = gradeQuiz;
 
+gradeQuiz = function(quiz){
+
+  const studentName = val("studentName");
+
+  let correct = 0;
+
+  quiz.questions.forEach((q,i) => {
+
+    const selected =
+
+      document.querySelector(`input[name="q${i}"]:checked`);
+
+    if(selected && Number(selected.value) === q.correct){
+
+      correct++;
+
+    }
+
+  });
+
+  const percent =
+
+    Math.round((correct / quiz.questions.length) * 100);
+
+  oldGradeQuiz(quiz);
+
+  if(percent < quiz.excellentAt || !studentName) return;
+
+  const resultCard = document.querySelector("#app .card");
+
+  if(!resultCard) return;
+
+  const box = document.createElement("div");
+
+  box.className = "actions";
+
+  box.innerHTML = `
+
+    <button class="primary" id="certBtn">
+
+      🎓 شهادة التفوق
+
+    </button>
+
+    <button class="secondary" id="parentBtn">
+
+      💜 شكر ولي الأمر
+
+    </button>
+
+  `;
+
+  resultCard.appendChild(box);
+
+  document.getElementById("certBtn").onclick = () => {
+
+    makeAward(
+
+      "شهادة تفوق",
+
+      `تُمنح هذه الشهادة للطالبة ${studentName}
+
+      تقديرًا لتفوقها وتميزها وحصولها على نسبة ${percent}%
+
+      في اختبار ${quiz.title}`,
+
+      `شهادة_تفوق_${studentName}.png`
+
+    );
+
+  };
+
+  document.getElementById("parentBtn").onclick = () => {
+
+    makeAward(
+
+      "شكر وتقدير لولي الأمر",
+
+      `نتقدم بخالص الشكر والتقدير لأسرة الطالبة ${studentName}
+
+      على المتابعة والدعم المستمر،
+
+      والذي أسهم في تميزها وتفوقها.
+
+      شكرًا لشراكتكم في صناعة النجاح.`,
+
+      `شكر_ولي_الأمر_${studentName}.png`
+
+    );
+
+  };
+
+};
+
+function makeAward(title,text,fileName){
+
+  const canvas = document.createElement("canvas");
+
+  canvas.width = 1600;
+
+  canvas.height = 1100;
+
+  const ctx = canvas.getContext("2d");
+
+  ctx.fillStyle = "#fffaf5";
+
+  ctx.fillRect(0,0,1600,1100);
+
+  ctx.strokeStyle = "#7355a6";
+
+  ctx.lineWidth = 18;
+
+  ctx.strokeRect(45,45,1510,1010);
+
+  ctx.strokeStyle = "#c5a55a";
+
+  ctx.lineWidth = 5;
+
+  ctx.strokeRect(75,75,1450,950);
+
+  ctx.textAlign = "center";
+
+  ctx.direction = "rtl";
+
+  ctx.fillStyle = "#7355a6";
+
+  ctx.font = "bold 74px Arial";
+
+  ctx.fillText(title,800,220);
+
+  ctx.fillStyle = "#282433";
+
+  ctx.font = "38px Arial";
+
+  const lines = text
+
+    .replace(/\s+/g," ")
+
+    .match(/.{1,48}(?:\s|$)/g) || [text];
+
+  lines.forEach((line,i) => {
+
+    ctx.fillText(line.trim(),800,390 + (i * 70));
+
+  });
+
+  ctx.fillStyle = "#7355a6";
+
+  ctx.font = "bold 34px Arial";
+
+  ctx.fillText(
+
+    "مع تمنياتنا بمزيد من النجاح والتميز",
+
+    800,
+
+    810
+
+  );
+
+  ctx.fillStyle = "#282433";
+
+  ctx.font = "30px Arial";
+
+  ctx.fillText(
+
+    "معلمة المادة: مريم الظفيري",
+
+    1150,
+
+    905
+
+  );
+
+  ctx.fillText(
+
+    "المتوسطة التاسعة عشر والابتدائية السابعة والثلاثون",
+
+    800,
+
+    980
+
+  );
+
+  const link = document.createElement("a");
+
+  link.href = canvas.toDataURL("image/png");
+
+  link.download = fileName;
+
+  document.body.appendChild(link);
+
+  link.click();
+
+  link.remove();
+
+}
 try{
 
   if(quizData){
