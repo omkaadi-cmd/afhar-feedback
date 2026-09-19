@@ -122,7 +122,7 @@ const SUPABASE_URL = "https://oefnaijupxprbscgzoxa.supabase.co";
 const SUPABASE_KEY = "sb_publishable_C8SkTQOWvL4ghK-7UlTSTQ_mmY1e8xM";
 
 const params = new URLSearchParams(location.search);
-const quizData = params.get("data");
+ const quizData = params.get("data") || new URLSearchParams(location.hash.slice(1)).get("data");
 
 function encodeQuiz(obj){
   return btoa(unescape(encodeURIComponent(JSON.stringify(obj))))
