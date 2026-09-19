@@ -4,46 +4,41 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>أثر | التغذية الراجعة الذكية</title>
-
 <style>
+:root{
+  --primary:#7355a6;
+  --primary-2:#5f468e;
+  --soft:#ece7f3;
+  --bg:#f7f4fb;
+  --text:#282433;
+  --muted:#71697a;
+  --border:#e6deec;
+  --ok:#e8f6ec;
+  --bad:#fff0f0;
+  --warn:#fff3cd;
+}
+*{box-sizing:border-box}
 body{
   font-family:Arial,Tahoma,sans-serif;
   margin:0;
-  background:#f7f4fb;
-  color:#282433;
+  background:var(--bg);
+  color:var(--text);
 }
 header{
   background:#fff;
   border-bottom:1px solid #e7e1ef;
   padding:24px 18px;
 }
-.wrap{
-  max-width:900px;
-  margin:auto;
-}
-.brand{
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
+.wrap{max-width:950px;margin:auto}
+.brand{display:flex;align-items:center;gap:14px}
 .logo{
-  width:58px;
-  height:58px;
-  border-radius:17px;
-  background:#7355a6;
-  color:#fff;
-  display:grid;
-  place-items:center;
-  font-size:23px;
-  font-weight:700;
+  width:58px;height:58px;border-radius:17px;
+  background:var(--primary);color:#fff;
+  display:grid;place-items:center;
+  font-size:23px;font-weight:700
 }
-h1{
-  margin:0;
-}
-.sub{
-  color:#6d6675;
-  margin-top:5px;
-}
+h1,h2,h3{margin-top:0}
+.sub{color:#6d6675;margin-top:5px}
 .card{
   background:#fff;
   margin:24px auto;
@@ -52,109 +47,53 @@ h1{
   box-shadow:0 8px 24px rgba(0,0,0,.06);
 }
 button{
-  border:0;
-  border-radius:12px;
-  padding:13px 18px;
-  font-size:16px;
-  cursor:pointer;
+  border:0;border-radius:12px;
+  padding:13px 18px;font-size:16px;
+  cursor:pointer
 }
-.primary{
-  background:#7355a6;
-  color:#fff;
-}
-.secondary{
-  background:#ece7f3;
-  color:#342c44;
-}
-.danger{
-  background:#f8dddd;
-  color:#7c2929;
-}
-.actions{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:16px;
-}
+.primary{background:var(--primary);color:#fff}
+.primary:hover{background:var(--primary-2)}
+.secondary{background:var(--soft);color:#342c44}
+.danger{background:#f8dddd;color:#7c2929}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
 input,textarea,select{
-  width:100%;
-  box-sizing:border-box;
-  padding:12px;
-  margin:7px 0 14px;
-  border:1px solid #d8d0e2;
-  border-radius:10px;
-  font-size:16px;
+  width:100%;padding:12px;margin:7px 0 14px;
+  border:1px solid #d8d0e2;border-radius:10px;
+  font-size:16px;background:#fff
 }
-label{
-  font-weight:700;
-}
+label{font-weight:700}
 .question{
-  border:1px solid #e6deec;
-  border-radius:14px;
-  padding:16px;
-  margin:14px 0;
+  border:1px solid var(--border);
+  border-radius:14px;padding:16px;margin:14px 0
 }
 .option{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  padding:9px;
-  margin:7px 0;
-  border:1px solid #eee;
-  border-radius:10px;
-  font-weight:400;
+  display:flex;align-items:center;gap:8px;
+  padding:9px;margin:7px 0;
+  border:1px solid #eee;border-radius:10px;
+  font-weight:400
 }
-.option input{
-  width:auto;
-  margin:0;
+.option input{width:auto;margin:0}
+.success{background:var(--ok);padding:14px;border-radius:12px}
+.notice{background:var(--warn);padding:12px;border-radius:10px}
+.good{background:#edf8ef;padding:12px;border-radius:10px;margin:10px 0}
+.bad{background:var(--bad);padding:12px;border-radius:10px;margin:10px 0}
+.score{font-size:52px;font-weight:800;color:var(--primary)}
+.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat{
+  border:1px solid var(--border);
+  border-radius:16px;padding:18px;text-align:center
 }
-.success{
-  background:#e8f6ec;
-  padding:14px;
-  border-radius:12px;
-}
-.notice{
-  background:#fff3cd;
-  padding:12px;
-  border-radius:10px;
-}
-.good{
-  background:#edf8ef;
-  padding:12px;
-  border-radius:10px;
-  margin:10px 0;
-}
-.bad{
-  background:#fff0f0;
-  padding:12px;
-  border-radius:10px;
-  margin:10px 0;
-}
-.score{
-  font-size:56px;
-  font-weight:800;
-  color:#7355a6;
-}
-.muted{
-  color:#71697a;
-}
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-footer{
-  text-align:center;
-  padding:28px 18px;
-  color:#6d6675;
-}
+.stat .n{font-size:38px;font-weight:800;color:var(--primary);margin-top:8px}
+footer{text-align:center;padding:28px 18px;color:#6d6675}
+.small{font-size:13px;color:var(--muted)}
 @media(max-width:650px){
   .grid{grid-template-columns:1fr}
   h1{font-size:24px}
+  .score{font-size:44px}
 }
 </style>
 </head>
-
 <body>
 
 <header>
@@ -179,6 +118,9 @@ footer{
 const app = document.getElementById("app");
 const ADMIN_KEY = "Athar@2026";
 
+const SUPABASE_URL = "https://oefnaijupxprbscgzoxa.supabase.co";
+const SUPABASE_KEY = "sb_publishable_C8SkTQOWvL4ghK-7UlTSTQ_mmY1e8xM";
+
 const params = new URLSearchParams(location.search);
 const quizData = params.get("data");
 
@@ -192,20 +134,12 @@ function encodeQuiz(obj){
 function decodeQuiz(str){
   str = str.replace(/-/g,"+").replace(/_/g,"/");
   while(str.length % 4) str += "=";
-  return JSON.parse(
-    decodeURIComponent(
-      escape(atob(str))
-    )
-  );
+  return JSON.parse(decodeURIComponent(escape(atob(str))));
 }
 
 function esc(s){
   return String(s ?? "").replace(/[&<>"']/g, m => ({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#39;"
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
   }[m]));
 }
 
@@ -225,36 +159,76 @@ function saveQuizzes(arr){
   localStorage.setItem("atharQuizzes", JSON.stringify(arr));
 }
 
+async function atharRpc(name, payload = {}){
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/${name}`, {
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json",
+      "apikey":SUPABASE_KEY
+    },
+    body:JSON.stringify(payload)
+  });
+
+  if(!res.ok){
+    throw new Error("تعذر الاتصال بقاعدة البيانات");
+  }
+
+  const text = await res.text();
+  return text ? JSON.parse(text) : null;
+}
+
+function trackVisit(quiz){
+    atharRpc("athar_log_visit", {
+    p_quiz_title: quiz.title || "اختبار"
+  }).catch(()=>{});
+}
+
+function trackResult(quiz, correct, wrong, percent, level){
+  atharRpc("athar_log_result", {
+    p_quiz_title: quiz.title || "اختبار",
+    p_correct_count: correct,
+    p_wrong_count: wrong,
+    p_percent: percent,
+    p_level: level
+  }).catch(()=>{});
+}
+
 function home(){
   app.innerHTML = `
     <section class="card">
-      <h2>تغذية راجعة فورية تصنع فرقًا</h2>
+      <h2>مرحبًا بك في منصة أثر 💜</h2>
       <p>
-        تنشئ المعلمة الأسئلة، ثم ترسل رابطًا للطالبة،
-        وبعد الحل تظهر النتيجة والتغذية الراجعة مباشرة.
+        منصة تعليمية للتغذية الراجعة الفورية تساعد الطالبة
+        على معرفة مستوى أدائها وتصحيح أخطائها مباشرة.
       </p>
 
       <div class="actions">
-        <button class="primary" id="teacherBtn">دخول المعلمة</button>
-        <button class="secondary" id="studentBtn">دخول الطالبة</button>
+        <button class="primary" id="studentBtn">
+          دخول الطالبة
+        </button>
+
+        <button class="secondary" id="teacherBtn">
+          دخول المعلمة
+        </button>
       </div>
     </section>
   `;
 
-  document.getElementById("teacherBtn").onclick = teacherLogin;
-
-  document.getElementById("studentBtn").onclick = () => {
+  document.getElementById("studentBtn").onclick = ()=>{
     app.innerHTML = `
       <section class="card">
-        <h2>دخول الطالبة</h2>
-        <p class="muted">
-          افتحي رابط الاختبار الذي أرسلته المعلمة.
-          كل اختبار له رابط خاص.
-        </p>
-        <button class="secondary" onclick="home()">عودة</button>
+        <h2>رابط الاختبار</h2>
+        <div class="notice">
+          افتحي رابط الاختبار الذي أرسلته لك المعلمة.
+        </div>
+        <div class="actions">
+          <button class="secondary" onclick="home()">رجوع</button>
+        </div>
       </section>
     `;
   };
+
+  document.getElementById("teacherBtn").onclick = teacherLogin;
 }
 
 function teacherLogin(){
@@ -263,24 +237,24 @@ function teacherLogin(){
       <h2>دخول المعلمة</h2>
 
       <label>رمز الدخول</label>
-      <input id="adminKey" type="password" placeholder="رمز المعلمة">
+      <input id="teacherCode" type="password"
+             placeholder="أدخلي رمز الدخول">
+
+      <div id="loginMsg"></div>
 
       <div class="actions">
         <button class="primary" id="loginBtn">دخول</button>
-        <button class="secondary" onclick="home()">عودة</button>
+        <button class="secondary" onclick="home()">رجوع</button>
       </div>
-
-      <div id="loginMsg"></div>
     </section>
   `;
 
-  document.getElementById("loginBtn").onclick = () => {
-    if(val("adminKey") !== ADMIN_KEY){
+  document.getElementById("loginBtn").onclick = ()=>{
+    if(val("teacherCode") !== ADMIN_KEY){
       document.getElementById("loginMsg").innerHTML =
-        '<p class="notice">رمز الدخول غير صحيح.</p>';
+        `<div class="bad">رمز الدخول غير صحيح</div>`;
       return;
     }
-
     teacherDashboard();
   };
 }
@@ -290,48 +264,160 @@ function teacherDashboard(){
 
   app.innerHTML = `
     <section class="card">
+      <h2>لوحة المعلمة</h2>
+      <p class="muted">معلمة المادة: مريم الظفيري</p>
+
       <div class="actions">
-        <button class="primary" id="newQuizBtn">+ اختبار جديد</button>
+        <button class="primary" id="newQuizBtn">
+          ➕ إنشاء اختبار جديد
+        </button>
+
+        <button class="secondary" id="statsBtn">
+          📊 الإحصائيات
+        </button>
       </div>
+    </section>
 
-      <h2>اختبارات التغذية الراجعة</h2>
+    <section class="card">
+      <h3>اختباراتي</h3>
 
-      <div id="quizList"></div>
+      ${
+        quizzes.length
+        ?
+        quizzes.map((q,i)=>`
+          <div class="question">
+            <strong>${esc(q.title)}</strong>
+            <div class="small">
+              عدد الأسئلة: ${q.questions.length}
+            </div>
+
+            <div class="actions">
+              <button class="secondary"
+                      onclick="copyQuizLink(${i})">
+                🔗 نسخ رابط الاختبار
+              </button>
+
+              <button class="danger"
+                      onclick="deleteQuiz(${i})">
+                حذف
+              </button>
+            </div>
+          </div>
+        `).join("")
+        :
+        `<p class="muted">لا توجد اختبارات محفوظة حتى الآن.</p>`
+      }
     </section>
   `;
 
-  const list = document.getElementById("quizList");
+  document.getElementById("newQuizBtn").onclick = createQuizForm;
+  document.getElementById("statsBtn").onclick = showAnalytics;
+}
 
-  if(!quizzes.length){
-    list.innerHTML = '<p class="muted">لا توجد اختبارات بعد.</p>';
+function deleteQuiz(i){
+  if(!confirm("هل تريدين حذف هذا الاختبار؟")) return;
+
+  const arr = getQuizzes();
+  arr.splice(i,1);
+  saveQuizzes(arr);
+  teacherDashboard();
+}
+
+function copyQuizLink(i){
+  const quiz = getQuizzes()[i];
+  const link =
+    location.origin +
+    location.pathname +
+    "?data=" +
+    encodeQuiz(quiz);
+
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(link)
+      .then(()=>alert("تم نسخ رابط الاختبار ✅"))
+      .catch(()=>prompt("انسخي الرابط:",link));
   }else{
-    list.innerHTML = quizzes.map((q,i) => `
-      <div class="question">
-        <h3>${esc(q.title)}</h3>
-        <p class="muted">
-          ${esc(q.subject || "")}
-          •
-          ${q.questions.length} سؤال
+    prompt("انسخي الرابط:",link);
+  }
+}
+
+async function showAnalytics(){
+  app.innerHTML = `
+    <section class="card">
+      <h2>📊 إحصائيات منصة أثر</h2>
+      <p>جارٍ تحميل الإحصائيات...</p>
+    </section>
+  `;
+
+  try{
+    const data = await atharRpc("athar_summary");
+
+    app.innerHTML = `
+      <section class="card">
+        <h2>📊 التقرير الإحصائي</h2>
+
+        <div class="grid">
+          <div class="stat">
+            <div>مرات الدخول</div>
+            <div class="n">${Number(data?.visits || 0)}</div>
+          </div>
+
+          <div class="stat">
+            <div>الاختبارات المكتملة</div>
+            <div class="n">${Number(data?.completed || 0)}</div>
+          </div>
+
+          <div class="stat">
+            <div>الطالبات المتفوقات</div>
+            <div class="n">${Number(data?.excellent || 0)}</div>
+          </div>
+
+          <div class="stat">
+            <div>متوسط النتائج</div>
+            <div class="n">${Number(data?.average || 0)}%</div>
+          </div>
+
+          <div class="stat">
+            <div>الإجابات الصحيحة</div>
+            <div class="n">${Number(data?.correct || 0)}</div>
+          </div>
+
+          <div class="stat">
+            <div>الإجابات الخاطئة</div>
+            <div class="n">${Number(data?.wrong || 0)}</div>
+          </div>
+        </div>
+
+        <p class="small">
+          ملاحظة: عدد مرات الدخول يحسب فتح رابط الاختبار،
+          وقد يتكرر إذا أعادت الطالبة فتح الصفحة.
         </p>
 
         <div class="actions">
-          <button class="secondary" onclick="copyQuizLink(${i})">
-            نسخ رابط الطالبات
-          </button>
-
-          <button class="danger" onclick="deleteQuiz(${i})">
-            حذف
+          <button class="secondary" onclick="teacherDashboard()">
+            رجوع للوحة المعلمة
           </button>
         </div>
-      </div>
-    `).join("");
+      </section>
+    `;
+  }catch(e){
+    app.innerHTML = `
+      <section class="card">
+        <h2>الإحصائيات</h2>
+        <div class="bad">
+          تعذر تحميل الإحصائيات الآن.
+        </div>
+        <div class="actions">
+          <button class="secondary" onclick="teacherDashboard()">
+            رجوع
+          </button>
+        </div>
+      </section>
+    `;
   }
-
-  document.getElementById("newQuizBtn").onclick = createQuizForm;
 }
 
 function createQuizForm(){
-  app.innerHTML = `
+    app.innerHTML = `
     <section class="card">
       <h2>إنشاء اختبار جديد</h2>
 
@@ -339,622 +425,508 @@ function createQuizForm(){
       <input id="quizTitle" placeholder="مثال: الدولة العباسية">
 
       <label>المادة</label>
-      <input id="quizSubject" value="الدراسات الاجتماعية">
+      <input id="subject" value="الدراسات الاجتماعية">
 
-      <label>الصف / الفصل</label>
-      <input id="quizGrade" placeholder="مثال: ثاني متوسط">
+      <label>نسبة التفوق التي تستحق عندها الطالبة الشهادة</label>
+      <select id="excellentAt">
+        <option value="90">90% فأكثر</option>
+        <option value="85">85% فأكثر</option>
+        <option value="80">80% فأكثر</option>
+      </select>
 
-      <label>نسبة التفوق</label>
-      <input id="excellentAt" type="number" value="90" min="1" max="100">
-
-      <div id="questions"></div>
+      <label>عدد الأسئلة</label>
+      <select id="questionCount">
+        <option value="3">3 أسئلة</option>
+        <option value="5" selected>5 أسئلة</option>
+        <option value="10">10 أسئلة</option>
+      </select>
 
       <div class="actions">
-        <button class="secondary" id="addQuestionBtn">
-          + إضافة سؤال
+        <button class="primary" id="continueQuizBtn">
+          متابعة وإدخال الأسئلة
         </button>
 
+        <button class="secondary" onclick="teacherDashboard()">
+          رجوع
+        </button>
+      </div>
+    </section>
+  `;
+
+  document.getElementById("continueQuizBtn").onclick = ()=>{
+    const title = val("quizTitle");
+    const subject = val("subject");
+    const excellentAt =
+      Number(document.getElementById("excellentAt").value);
+    const count =
+      Number(document.getElementById("questionCount").value);
+
+    if(!title){
+      alert("اكتبي عنوان الاختبار");
+      return;
+    }
+
+    questionsForm({
+      title,
+      subject,
+      excellentAt,
+      count
+    });
+  };
+}
+
+function questionsForm(info){
+  let blocks = "";
+
+  for(let i=0;i<info.count;i++){
+    blocks += `
+      <div class="question">
+        <h3>السؤال ${i+1}</h3>
+
+        <label>نص السؤال</label>
+        <input id="q${i}"
+               placeholder="اكتبي السؤال هنا">
+
+        <label>الخيار الأول</label>
+        <input id="q${i}a"
+               placeholder="الخيار الأول">
+
+        <label>الخيار الثاني</label>
+        <input id="q${i}b"
+               placeholder="الخيار الثاني">
+
+        <label>الخيار الثالث</label>
+        <input id="q${i}c"
+               placeholder="الخيار الثالث">
+
+        <label>الخيار الرابع</label>
+        <input id="q${i}d"
+               placeholder="الخيار الرابع">
+
+        <label>الإجابة الصحيحة</label>
+        <select id="q${i}correct">
+          <option value="0">الخيار الأول</option>
+          <option value="1">الخيار الثاني</option>
+          <option value="2">الخيار الثالث</option>
+          <option value="3">الخيار الرابع</option>
+        </select>
+
+        <label>التغذية الراجعة عند الخطأ</label>
+        <textarea id="q${i}feedback"
+          placeholder="مثال: راجعي الفقرة الخاصة بهذا المفهوم في الدرس."></textarea>
+      </div>
+    `;
+  }
+
+  app.innerHTML = `
+    <section class="card">
+      <h2>${esc(info.title)}</h2>
+      <p class="muted">${esc(info.subject)}</p>
+
+      ${blocks}
+
+      <div class="actions">
         <button class="primary" id="saveQuizBtn">
           حفظ وإنشاء الرابط
         </button>
 
-        <button class="secondary" onclick="teacherDashboard()">
-          عودة
+        <button class="secondary" onclick="createQuizForm()">
+          رجوع
         </button>
       </div>
-
-      <div id="saveMsg"></div>
     </section>
   `;
 
-  document.getElementById("addQuestionBtn").onclick = addQuestion;
-  document.getElementById("saveQuizBtn").onclick = saveQuiz;
+  document.getElementById("saveQuizBtn").onclick = ()=>{
+    const questions = [];
 
-  addQuestion();
-  addQuestion();
-  addQuestion();
-}
+    for(let i=0;i<info.count;i++){
+      const question = val(`q${i}`);
+      const options = [
+        val(`q${i}a`),
+        val(`q${i}b`),
+        val(`q${i}c`),
+        val(`q${i}d`)
+      ];
 
-function addQuestion(){
-  const box = document.createElement("div");
-  box.className = "question qedit";
+      const correct =
+        Number(document.getElementById(`q${i}correct`).value);
 
-  box.innerHTML = `
-    <label>نص السؤال</label>
-    <input class="qtext" placeholder="اكتبي السؤال">
+      const feedback = val(`q${i}feedback`);
 
-    <div class="grid">
-      <input class="optionInput" placeholder="الخيار الأول">
-      <input class="optionInput" placeholder="الخيار الثاني">
-      <input class="optionInput" placeholder="الخيار الثالث">
-      <input class="optionInput" placeholder="الخيار الرابع">
-    </div>
+      if(!question || options.some(x=>!x)){
+        alert(`أكملي بيانات السؤال ${i+1}`);
+        return;
+      }
 
-    <label>الإجابة الصحيحة</label>
-    <select class="correctAnswer">
-      <option value="0">الخيار الأول</option>
-      <option value="1">الخيار الثاني</option>
-      <option value="2">الخيار الثالث</option>
-      <option value="3">الخيار الرابع</option>
-    </select>
+      questions.push({
+        question,
+        options,
+        correct,
+        feedback
+      });
+    }
 
-    <label>التغذية الراجعة</label>
-    <textarea
-      class="explanation"
-      rows="2"
-      placeholder="اكتبي تفسيرًا أو ملاحظة قصيرة للطالبة">
-    </textarea>
+    const quiz = {
+      title:info.title,
+      subject:info.subject,
+      excellentAt:info.excellentAt,
+      questions
+    };
 
-    <button class="danger removeQuestion" type="button">
-      حذف السؤال
-    </button>
-  `;
+    const arr = getQuizzes();
+    arr.unshift(quiz);
+    saveQuizzes(arr);
 
-  box.querySelector(".removeQuestion").onclick = () => box.remove();
+    const link =
+      location.origin +
+      location.pathname +
+      "?data=" +
+      encodeQuiz(quiz);
 
-  document.getElementById("questions").appendChild(box);
-}
+    app.innerHTML = `
+      <section class="card">
+        <h2>تم إنشاء الاختبار بنجاح ✅</h2>
 
-function saveQuiz(){
-  const questions =
-    [...document.querySelectorAll(".qedit")]
+        <div class="success">
+          أصبح رابط الاختبار جاهزًا للإرسال للطالبات.
+        </div>
 
-    .map(el => ({
-      text: el.querySelector(".qtext").value.trim(),
+        <label>رابط الاختبار</label>
+        <textarea id="quizLink" readonly>${esc(link)}</textarea>
 
-      options:
-        [...el.querySelectorAll(".optionInput")]
-        .map(x => x.value.trim()),
+        <div class="actions">
+          <button class="primary" id="copyCreatedLink">
+            🔗 نسخ الرابط
+          </button>
 
-      correct:
-        Number(el.querySelector(".correctAnswer").value),
+          <button class="secondary" onclick="teacherDashboard()">
+            العودة للوحة المعلمة
+          </button>
+        </div>
+      </section>
+    `;
 
-      explanation:
-        el.querySelector(".explanation").value.trim()
-    }))
-
-    .filter(q =>
-      q.text &&
-      q.options.filter(Boolean).length >= 2
-    );
-
-  const quiz = {
-    title: val("quizTitle"),
-    subject: val("quizSubject"),
-    grade: val("quizGrade"),
-    excellentAt: Number(val("excellentAt")) || 90,
-    questions
-  };
-
-  if(!quiz.title){
-    document.getElementById("saveMsg").innerHTML =
-      '<p class="notice">اكتبي عنوان الاختبار.</p>';
-    return;
-  }
-
-  if(!quiz.questions.length){
-    document.getElementById("saveMsg").innerHTML =
-      '<p class="notice">أضيفي سؤالًا واحدًا على الأقل.</p>';
-    return;
-  }
-
-  const quizzes = getQuizzes();
-
-  quizzes.push(quiz);
-
-  saveQuizzes(quizzes);
-
-  const link =
-    location.origin +
-    location.pathname +
-    "?data=" +
-    encodeQuiz(quiz);
-
-  document.getElementById("saveMsg").innerHTML = `
-    <div class="success">
-
-      <strong>تم إنشاء الاختبار بنجاح.</strong>
-
-      <p>هذا رابط الطالبات:</p>
-
-      <textarea id="studentLink" rows="4">
-${esc(link)}
-      </textarea>
-
-      <button class="primary" id="copyStudentLink">
-        نسخ الرابط
-      </button>
-
-    </div>
-  `;
-
-  document.getElementById("copyStudentLink").onclick = () => {
-    copyText(link);
+    document.getElementById("copyCreatedLink").onclick = ()=>{
+      if(navigator.clipboard){
+        navigator.clipboard.writeText(link)
+          .then(()=>alert("تم نسخ الرابط ✅"))
+          .catch(()=>prompt("انسخي الرابط:",link));
+      }else{
+        prompt("انسخي الرابط:",link);
+      }
+    };
   };
 }
 
-window.copyQuizLink = function(i){
-  const quiz = getQuizzes()[i];
-
-  const link =
-    location.origin +
-    location.pathname +
-    "?data=" +
-    encodeQuiz(quiz);
-
-  copyText(link);
-};
-
-window.deleteQuiz = function(i){
-  if(!confirm("هل تريدين حذف الاختبار؟")) return;
-
-  const quizzes = getQuizzes();
-
-  quizzes.splice(i,1);
-
-  saveQuizzes(quizzes);
-
-  teacherDashboard();
-};
-
-async function copyText(text){
-  try{
-    await navigator.clipboard.writeText(text);
-    alert("تم نسخ رابط الطالبات");
-  }catch{
-    prompt("انسخي الرابط:",text);
-  }
-}
-
-function loadStudentQuiz(quiz){
+function studentQuiz(quiz){
+    trackVisit(quiz);
 
   app.innerHTML = `
     <section class="card">
-
       <h2>${esc(quiz.title)}</h2>
+      <p class="muted">${esc(quiz.subject || "الدراسات الاجتماعية")}</p>
 
-      <p class="muted">
-        ${esc(quiz.subject || "")}
-        ${quiz.grade ? "• " + esc(quiz.grade) : ""}
-      </p>
-
-      <label>اسم الطالبة</label>
-      <input id="studentName" placeholder="الاسم الثلاثي">
-
-      <label>الفصل</label>
-      <input id="studentClass" placeholder="مثال: 2/1">
-
-      <div id="studentQuestions">
-
-      ${
-        quiz.questions.map((q,i) => `
-
-          <div class="question">
-
-            <h3>
-              ${i+1}. ${esc(q.text)}
-            </h3>
-
-            ${
-              q.options.map((opt,j) =>
-
-                opt
-                ?
-                `
-                <label class="option">
-
-                  <input
-                    type="radio"
-                    name="q${i}"
-                    value="${j}"
-                  >
-
-                  <span>${esc(opt)}</span>
-
-                </label>
-                `
-                :
-                ""
-
-              ).join("")
-            }
-
-          </div>
-
-        `).join("")
-      }
-
+      <div class="notice">
+        اكتبي بياناتك أولًا، ثم أجيبي عن جميع الأسئلة.
       </div>
 
-      <button class="primary" id="submitQuizBtn">
-        إرسال الإجابات وعرض التغذية الراجعة
-      </button>
+      <label>اسم الطالبة</label>
+      <input id="studentName" placeholder="اكتبي اسمك">
+
+      <label>الصف / الفصل</label>
+      <input id="studentClass" placeholder="مثال: ثالث متوسط / أ">
 
       <div id="studentMsg"></div>
 
+      ${quiz.questions.map((q,i)=>`
+        <div class="question">
+          <h3>${i+1}. ${esc(q.question)}</h3>
+
+          ${q.options.map((op,j)=>`
+            <label class="option">
+              <input type="radio"
+                     name="question${i}"
+                     value="${j}">
+              <span>${esc(op)}</span>
+            </label>
+          `).join("")}
+        </div>
+      `).join("")}
+
+      <div class="actions">
+        <button class="primary" id="submitQuizBtn">
+          إرسال الإجابات
+        </button>
+      </div>
     </section>
   `;
 
-  document.getElementById("submitQuizBtn").onclick = () => {
+  document.getElementById("submitQuizBtn").onclick = ()=>{
     gradeQuiz(quiz);
   };
 }
 
 function gradeQuiz(quiz){
-
   const studentName = val("studentName");
+  const studentClass = val("studentClass");
 
   if(!studentName){
-
     document.getElementById("studentMsg").innerHTML =
-      '<p class="notice">اكتبي اسمك أولًا.</p>';
-
+      `<div class="bad">اكتبي اسم الطالبة أولًا.</div>`;
     return;
   }
 
-  const answers =
-    quiz.questions.map((_,i) => {
+  if(!studentClass){
+    document.getElementById("studentMsg").innerHTML =
+      `<div class="bad">اكتبي الصف أو الفصل أولًا.</div>`;
+    return;
+  }
 
-      const selected =
-        document.querySelector(
-          `input[name="q${i}"]:checked`
-        );
+  let correct = 0;
+  let wrong = 0;
+  const feedback = [];
 
-      return selected
-        ? Number(selected.value)
-        : -1;
+  for(let i=0;i<quiz.questions.length;i++){
+    const q = quiz.questions[i];
+
+    const selected =
+      document.querySelector(
+        `input[name="question${i}"]:checked`
+      );
+
+    if(!selected){
+      document.getElementById("studentMsg").innerHTML =
+        `<div class="bad">
+          أجيبي عن جميع الأسئلة قبل إرسال الاختبار.
+        </div>`;
+      return;
+    }
+
+    const answer = Number(selected.value);
+    const ok = answer === Number(q.correct);
+
+    if(ok){
+      correct++;
+    }else{
+      wrong++;
+    }
+
+    feedback.push({
+      question:q.question,
+      ok,
+      correctText:q.options[q.correct],
+      feedback:q.feedback || "راجعي هذا الجزء من الدرس."
     });
-
-  let correctCount = 0;
-
-  const feedback =
-    quiz.questions.map((q,i) => {
-
-      const ok =
-        answers[i] === q.correct;
-
-      if(ok) correctCount++;
-
-      return {
-        ok,
-        question:q.text,
-        correctText:q.options[q.correct],
-        explanation:
-          q.explanation ||
-          "راجعي الإجابة الصحيحة."
-      };
-    });
+  }
 
   const percent =
-    Math.round(
-      correctCount /
-      quiz.questions.length *
-      100
-    );
+    Math.round((correct / quiz.questions.length) * 100);
 
   let level = "";
 
-  if(percent >= quiz.excellentAt){
+  if(percent >= Number(quiz.excellentAt || 90)){
     level = "متفوقة";
-  }
-  else if(percent >= 80){
+  }else if(percent >= 80){
     level = "متقنة";
-  }
-  else if(percent >= 60){
+  }else if(percent >= 60){
     level = "جيدة";
-  }
-  else{
+  }else{
     level = "تحتاج مراجعة";
   }
 
-  app.innerHTML = `
-    <section class="card">
+  trackResult(
+    quiz,
+    correct,
+    wrong,
+    percent,
+    level
+  );
 
-      <h2>${esc(studentName)}</h2>
-
-      <div class="score">
-        ${percent}%
-      </div>
-
-      <h3>
-        المستوى: ${level}
-      </h3>
+  const feedbackHtml = feedback.map((f,i)=>`
+    <div class="${f.ok ? "good" : "bad"}">
+      <strong>
+        ${i+1}. ${esc(f.question)}
+      </strong>
 
       <p>
-        ${correctCount}
-        إجابة صحيحة من أصل
-        ${quiz.questions.length}
+        ${
+          f.ok
+          ? "✓ إجابة صحيحة"
+          : "✕ الإجابة الصحيحة: " + esc(f.correctText)
+        }
       </p>
 
       ${
-        feedback.map((f,i) => `
-
-          <div class="${f.ok ? "good" : "bad"}">
-
-            <strong>
-              ${i+1}.
-              ${esc(f.question)}
-            </strong>
-
-            <p>
-              ${
-                f.ok
-                ?
-                "✓ إجابة صحيحة"
-                :
-                "✗ الإجابة الصحيحة: " +
-                esc(f.correctText)
-              }
-            </p>
-
-            <small>
-              ${esc(f.explanation)}
-            </small>
-
-          </div>
-
-        `).join("")
+        f.ok
+        ? ""
+        : `<p><strong>التغذية الراجعة:</strong>
+             ${esc(f.feedback)}
+           </p>`
       }
+    </div>
+  `).join("");
 
-      ${
-        percent >= quiz.excellentAt
-        ?
-        `
-        <div class="success">
-          🌟 مبارك لكِ،
-          حققتِ مستوى متفوقة
+  app.innerHTML = `
+    <section class="card">
+      <h2>نتيجة الطالبة</h2>
+
+      <p>
+        <strong>${esc(studentName)}</strong>
+        •
+        ${esc(studentClass)}
+      </p>
+
+      <div class="score">${percent}%</div>
+
+      <h3>${esc(level)}</h3>
+
+      <div class="grid">
+        <div class="stat">
+          <div>الإجابات الصحيحة</div>
+          <div class="n">${correct}</div>
         </div>
-        `
-        :
-        ""
-      }
 
+        <div class="stat">
+          <div>الإجابات الخاطئة</div>
+          <div class="n">${wrong}</div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:24px">
+        التغذية الراجعة
+      </h3>
+
+      ${feedbackHtml}
+
+      <div id="awardButtons"></div>
     </section>
   `;
+
+  const box = document.getElementById("awardButtons");
+
+  if(percent >= Number(quiz.excellentAt || 90)){
+    box.innerHTML = `
+      <div class="success" style="margin-top:20px">
+        🎉 أحسنتِ! تستحقين شهادة التفوق.
+      </div>
+
+      <div class="actions">
+        <button class="primary" id="certBtn">
+          🎓 شهادة التفوق
+        </button>
+
+        <button class="secondary" id="parentBtn">
+          💜 شكر ولي الأمر
+        </button>
+      </div>
+    `;
+
+    const cert = ()=>{
+      makeAward(
+        "شهادة تفوق",
+        `تُمنح للطالبة ${studentName}
+تقديرًا لتفوقها وتميزها في ${quiz.title}
+وحصولها على نسبة ${percent}%
+مع أطيب الأمنيات لها بمزيد من النجاح والتفوق.`,
+        `شهادة_التفوق_${studentName}.png`
+      );
+    };
+
+    document.getElementById("certBtn").onclick = cert;
+
+    document.getElementById("parentBtn").onclick = ()=>{
+      makeAward(
+        "شكر وتقدير لولي الأمر",
+        `نتقدم بخالص الشكر والتقدير لولي أمر الطالبة
+${studentName}
+على المتابعة والدعم المستمر،
+والذي أسهم في تميزها وتفوقها.
+شكرًا لشراكتكم في صناعة النجاح.`,
+        `شكر_ولي_الأمر_${studentName}.png`
+      );
+    };
+
+    setTimeout(cert,150);
+  }
 }
-const oldGradeQuiz = gradeQuiz;
-
-gradeQuiz = function(quiz){
-
-  const studentName = val("studentName");
-
-  let correct = 0;
-
-  quiz.questions.forEach((q,i) => {
-
-    const selected =
-
-      document.querySelector(`input[name="q${i}"]:checked`);
-
-    if(selected && Number(selected.value) === q.correct){
-
-      correct++;
-
-    }
-
-  });
-
-  const percent =
-
-    Math.round((correct / quiz.questions.length) * 100);
-
-  oldGradeQuiz(quiz);
-
-  if(percent < quiz.excellentAt || !studentName) return;
-
-  const resultCard = document.querySelector("#app .card");
-
-  if(!resultCard) return;
-
-  const box = document.createElement("div");
-
-  box.className = "actions";
-
-  box.innerHTML = `
-
-    <button class="primary" id="certBtn">
-
-      🎓 شهادة التفوق
-
-    </button>
-
-    <button class="secondary" id="parentBtn">
-
-      💜 شكر ولي الأمر
-
-    </button>
-
-  `;
-
-  resultCard.appendChild(box);
-
-  document.getElementById("certBtn").onclick = () => {
-
-    makeAward(
-
-      "شهادة تفوق",
-
-      `تُمنح هذه الشهادة للطالبة ${studentName}
-
-      تقديرًا لتفوقها وتميزها وحصولها على نسبة ${percent}%
-
-      في اختبار ${quiz.title}`,
-
-      `شهادة_تفوق_${studentName}.png`
-
-    );
-
-  };
-
-  document.getElementById("parentBtn").onclick = () => {
-
-    makeAward(
-
-      "شكر وتقدير لولي الأمر",
-
-      `نتقدم بخالص الشكر والتقدير لأسرة الطالبة ${studentName}
-
-      على المتابعة والدعم المستمر،
-
-      والذي أسهم في تميزها وتفوقها.
-
-      شكرًا لشراكتكم في صناعة النجاح.`,
-
-      `شكر_ولي_الأمر_${studentName}.png`
-
-    );
-
-  };
-
-};
 
 function makeAward(title,text,fileName){
-
-  const canvas = document.createElement("canvas");
-
+    const canvas = document.createElement("canvas");
   canvas.width = 1600;
-
   canvas.height = 1100;
 
   const ctx = canvas.getContext("2d");
 
-  ctx.fillStyle = "#fffaf5";
-
-  ctx.fillRect(0,0,1600,1100);
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
 
   ctx.strokeStyle = "#7355a6";
-
-  ctx.lineWidth = 18;
-
+  ctx.lineWidth = 16;
   ctx.strokeRect(45,45,1510,1010);
 
   ctx.strokeStyle = "#c5a55a";
-
   ctx.lineWidth = 5;
-
   ctx.strokeRect(75,75,1450,950);
 
   ctx.textAlign = "center";
-
   ctx.direction = "rtl";
 
   ctx.fillStyle = "#7355a6";
+  ctx.font = "bold 72px Arial";
+  ctx.fillText("أثر | التغذية الراجعة الذكية",800,180);
 
-  ctx.font = "bold 74px Arial";
-
-  ctx.fillText(title,800,220);
+  ctx.fillStyle = "#c5a55a";
+  ctx.font = "bold 68px Arial";
+  ctx.fillText(title,800,310);
 
   ctx.fillStyle = "#282433";
+  ctx.font = "42px Arial";
 
-  ctx.font = "38px Arial";
+  const lines = String(text).split("\n");
+  let y = 430;
 
-  const lines = text
-
-    .replace(/\s+/g," ")
-
-    .match(/.{1,48}(?:\s|$)/g) || [text];
-
-  lines.forEach((line,i) => {
-
-    ctx.fillText(line.trim(),800,390 + (i * 70));
-
+  lines.forEach(line=>{
+    ctx.fillText(line,800,y);
+    y += 75;
   });
 
   ctx.fillStyle = "#7355a6";
-
   ctx.font = "bold 34px Arial";
-
-  ctx.fillText(
-
-    "مع تمنياتنا بمزيد من النجاح والتميز",
-
-    800,
-
-    810
-
-  );
+  ctx.fillText("معلمة المادة: مريم الظفيري",800,900);
 
   ctx.fillStyle = "#282433";
-
   ctx.font = "30px Arial";
-
   ctx.fillText(
-
-    "معلمة المادة: مريم الظفيري",
-
-    1150,
-
-    905
-
-  );
-
-  ctx.fillText(
-
     "المتوسطة التاسعة عشر والابتدائية السابعة والثلاثون",
-
     800,
-
-    980
-
+    960
   );
 
   const link = document.createElement("a");
-
-  link.href = canvas.toDataURL("image/png");
-
   link.download = fileName;
-
+  link.href = canvas.toDataURL("image/png");
   document.body.appendChild(link);
-
   link.click();
-
   link.remove();
-
 }
-try{
 
-  if(quizData){
-
-    loadStudentQuiz(
-      decodeQuiz(quizData)
-    );
-
-  }else{
-
-    home();
-
+if(quizData){
+  try{
+    const quiz = decodeQuiz(quizData);
+    studentQuiz(quiz);
+  }catch(e){
+    app.innerHTML = `
+      <section class="card">
+        <h2>تعذر فتح الاختبار</h2>
+        <div class="bad">
+          رابط الاختبار غير صالح أو غير مكتمل.
+        </div>
+      </section>
+    `;
   }
-
-}catch(err){
-
-  app.innerHTML = `
-    <section class="card">
-      <p class="notice">
-        تعذر فتح رابط الاختبار.
-        اطلبِي من المعلمة إرسال الرابط من جديد.
-      </p>
-    </section>
-  `;
+}else{
+  home();
 }
 </script>
 
