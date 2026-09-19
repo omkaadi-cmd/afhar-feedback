@@ -328,7 +328,7 @@ function copyQuizLink(i){
   const link =
     location.origin +
     location.pathname +
-    "?data=" +
+    "#data=" +
     encodeQuiz(quiz);
 
   if(navigator.clipboard){
@@ -581,7 +581,7 @@ function questionsForm(info){
     const link =
       location.origin +
       location.pathname +
-      "?data=" +
+      "#data=" +
       encodeQuiz(quiz);
 
     app.innerHTML = `
